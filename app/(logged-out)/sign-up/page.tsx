@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
 import {
 	Card,
 	CardContent,
@@ -18,7 +19,11 @@ import {
 	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Popover, PopoverTrigger } from '@/components/ui/popover'
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from '@/components/ui/popover'
 import {
 	Select,
 	SelectContent,
@@ -83,6 +88,9 @@ export default function SignUpPage() {
 	}
 
 	const accountType = form.watch('accountType')
+
+	const dobFromDate = new Date()
+	dobFromDate.setFullYear(dobFromDate.getFullYear() - 120)
 
 	return (
 		<>
@@ -191,6 +199,22 @@ export default function SignUpPage() {
 													</Button>
 												</FormControl>
 											</PopoverTrigger>
+											<PopoverContent align='start' className='w-auto p-0'>
+												<Calendar
+													mode='single'
+													defaultMonth={field.value}
+													selected={field.value}
+													onSelect={field.onChange}
+													fixedWeeks
+													weekStartsOn={1}
+													fromDate={dobFromDate}
+													toDate={new Date()}
+													captionLayout='dropdown-buttons'
+													// disabled={date => {
+													// 	return date.getDay() === 0 || date.getDay() === 6
+													// }}
+												/>
+											</PopoverContent>
 										</Popover>
 										<FormMessage />
 									</FormItem>
