@@ -16,7 +16,7 @@ export default function EmployeesStats() {
 						<span className='text-5xl font-bold'>100</span>
 					</div>
 					<div>
-						<Button size={'sm'} asChild>
+						<Button size={'xs'} asChild>
 							<Link href='/dashboard/employees'>View all</Link>
 						</Button>
 					</div>
