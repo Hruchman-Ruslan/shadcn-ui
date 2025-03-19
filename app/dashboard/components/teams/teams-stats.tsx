@@ -14,6 +14,7 @@ import {
 	TooltipTrigger,
 } from '@/components/ui/tooltip'
 import TeamDistributionChart from './team-distribution-chart'
+import SupportTicketsResolved from './support-tickets-resolved'
 
 const teamLeaders = [
 	{
@@ -135,7 +136,7 @@ export default function TeamsStats() {
 							<PieChartIcon />
 						</CardTitle>
 					</CardHeader>
-					<CardContent>
+					<CardContent className='pb-0'>
 						<TeamDistributionChart />
 					</CardContent>
 				</Card>
@@ -147,7 +148,9 @@ export default function TeamsStats() {
 						<span>Support tickets resolver</span>
 					</CardTitle>
 				</CardHeader>
-				<CardContent className='pl-0'>line graph</CardContent>
+				<CardContent className='pl-0'>
+					<SupportTicketsResolved />
+				</CardContent>
 			</Card>
 		</>
 	)
