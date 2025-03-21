@@ -5,6 +5,7 @@ import MainMenu from './components/main-menu'
 import MenuTitle from './components/menu-title'
 import { MenuIcon } from 'lucide-react'
 import { useMediaQuery } from '@/hooks/use-media-query'
+import { useState } from 'react'
 
 export default function DashboardLayout({
 	children,
@@ -12,6 +13,7 @@ export default function DashboardLayout({
 	children: React.ReactNode
 }) {
 	const isDesktop = useMediaQuery('(min-width: 768px)')
+	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	return (
 		<div className='md:grid md:grid-cols-[250px_1fr] h-screen'>
@@ -19,7 +21,12 @@ export default function DashboardLayout({
 			{!isDesktop && (
 				<div className='p-4 flex justify-between md:hidden sticky top-0 left-0 bg-background border-b border-border'>
 					<MenuTitle />
-					<Drawer direction='right'>
+					<Drawer
+						direction='right'
+						open={isMenuOpen}
+						onClose={() => setIsMenuOpen(false)}
+						onOpenChange={open => setIsMenuOpen(open)}
+					>
 						<DrawerTrigger>
 							<MenuIcon />
 						</DrawerTrigger>
